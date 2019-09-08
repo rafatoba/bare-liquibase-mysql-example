@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.rafatoba.liquibase.example</groupId>
+	<artifactId>liquibase-mysql-example</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>liquibase-mysql-example</name>
+	<description>Liquibase with mysql simple example</description>
+
+	<!-- Dependencies -->
+	<dependencies>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<!-- Replace with the version of the MySQL driver you want to use -->
+			<version>8.0.17</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>3.0.5</version>
+				<configuration>
+					<propertyFile>src/main/resources/liquibase/liquibase.properties</propertyFile>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>update</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>
