@@ -1,5 +1,4 @@
 # bare-liquibase-mysql-example
-==============================
 Simple liquibase example with MySQL. This will generate a simple company database with an employee table using MySQL. For more information regarding liquibase, please visit https://www.liquibase.org/
 ## Configuration
 Out of the box, this project is going to access your local instance of MySQL using user _root_ and password _pass_ . If you want to change this, you will need to edit the file _src/main/resources/liquibase/liquibase.properties_ . The file looks like the next:
