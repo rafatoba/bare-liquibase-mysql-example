@@ -7,7 +7,14 @@
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd 
    http://www.liquibase.org/xml/ns/dbchangelog 
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
-  <include file="src/main/resources/liquibase/changelog/changelog-table-employee.xml"/>
-  <include file="src/main/resources/liquibase/changelog/changelog-content-employee.xml"/> 
-  <include file="src/main/resources/liquibase/changelog/changelog-remote-column.xml"/>
+	<changeSet id="1" author="rafa">
+		<addColumn schemaName="company" tableName="employee">
+		    <column name="isRemote" type="boolean" defaultValueBoolean="0"/>
+		</addColumn>
+	</changeSet>
+    <changeSet id="2" author="rafa">
+		<update tableName="employee">
+		    <column name="isRemote" valueBoolean="0"/>
+		</update>
+	</changeSet>
 </databaseChangeLog>
