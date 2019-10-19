@@ -78,3 +78,13 @@ In order to avoid that problematic, I have declared the clean plugin in the pom.
 			</plugin>
 ```
 So if we run clean, it will always generate the SQL using all the changelogs we have created.
+
+### Create an image from a MySql database containing those changes. ###
+Now we want to generate an image that contains a MySql database already initialized with the MySql changes that liquibase generated. That is possible thanks to the mysql image. The containers created from this image will take the scripts that are in the directory `/docker-entrypoint-initdb.d` and initialize the DB with them. So the Dockerfile will look like the following one:
+```
+FROM mysql
+ENV MYSQL_DATABASE company
+ENV MYSQL_ROOT_PASSWORD pass
+COPY ./target/liquibase/ /docker-entrypoint-initdb.d/
+```
+Here, we are telling that we want our image to use ```mysql``` image as a base. We are also going to set the DB name to `company`. We are also setting the super safe password `pass` for the root user. And we are copying the scripts we generated with liquibase (which are now in the directory `target/liquibase/`) into the directory `/docker-entrypoint-initdb.d/` inside the container. In that way, during the container initialization, those scripts will be used to generate the DB data for us.
