@@ -14,7 +14,7 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<!-- Replace with the version of the MySQL driver you want to use -->
-			<version>8.0.17</version>
+			<version>8.0.28</version>
 		</dependency>
 	</dependencies>
 	<build>
